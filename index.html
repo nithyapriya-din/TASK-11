@@ -1,0 +1,27 @@
+# Initializes the CodeQL tools for scanning.	      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL	      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2	        uses: github/codeql-action/init@v3
+        with:	        with:
+          languages: "${{ matrix.language }}"	          languages: "${{ matrix.language }}"
+
+
+      # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).	      # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
+      # If this step fails, then you should remove it and run the build manually (see below)	      # If this step fails, then you should remove it and run the build manually (see below)
+      - name: Autobuild	      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2	        uses: github/codeql-action/autobuild@v3
+
+
+      - name: Perform CodeQL Analysis	      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2	        uses: github/codeql-action/analyze@v3
+        with:	        with:
+          category: "/language:${{ matrix.language }}"	          category: "/language:${{ matrix.language }}"
+  2 changes: 1 addition & 1 deletion2  
+.github/workflows/stale.yml
+@@ -20,7 +20,7 @@ jobs:
+  stale:	  stale:
+    runs-on: ubuntu-latest	    runs-on: ubuntu-latest
+    steps:	    steps:
+      - uses: actions/stale@v8	      - uses: actions/stale@v9
+        with:	        with:
+          days-before-stale: 30	          days-before-stale: 30
+          days-before-close: 1	          days-before-close: 1
